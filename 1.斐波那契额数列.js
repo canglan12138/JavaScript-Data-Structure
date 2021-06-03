@@ -1,3 +1,7 @@
+/*
+1	2	3	4	5	6	7	  8
+1	1	2	3	5	8	13	21
+* */
 function fun(n) {
   // if (n <= 2) return 1
   // return fun(n-1) + fun(n-2)
