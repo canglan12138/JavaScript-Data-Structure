@@ -49,7 +49,7 @@ function Stack () {
 // console.log(s.my_toString());
 
 /*
-10进制转二进制
+10进制转2进制
 * */
 function ten_change_two(number) {
   var s =new Stack()
