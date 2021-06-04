@@ -21,7 +21,7 @@ function my_fun(n) {
     arr[i] = arr[i-1] + arr[i-2]
   }
 
-  for (let i = 0;i < n;i++) {
+  for (let i in arr) {
     console.log(i + ':' + arr[i]);
   }
 }
