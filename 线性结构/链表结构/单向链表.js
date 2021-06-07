@@ -32,7 +32,7 @@ function LinkedList() {
     let str = ''
     var current_node = this.head
       while (current_node) { //循环遍历节点
-        str += current_node.data
+        str += current_node.data + ' '
         current_node = current_node.next
       }
       return str
@@ -69,7 +69,7 @@ function LinkedList() {
     //判断是否有节点
     if (this.length > 0) {
       //position 进行越界判断
-      if (position < 0 || position > this.length) return false
+      if (position < 0 || position >= this.length) return false
       let current_node = this.head
       let pre = null
       let index = 0
@@ -125,6 +125,36 @@ function LinkedList() {
   LinkedList.prototype.getFirst = function () {
     return this.head.data
   }
+
+  //10.update
+  LinkedList.prototype.update = function (position,data) {
+    //对 position 进行越界判断
+    if (position < 0 || position >= this.length) return false
+    let current_node = this.head
+    let index = 0
+    while (index < position) {
+      current_node = current_node.next
+      index++
+    }
+    current_node.data = data
+  }
+
+  //11.get 获取对应位置的元素
+  LinkedList.prototype.get = function (position) {
+    //对 position 进行越界判断
+    if (position < 0 || position >= this.length) return false
+    let current_node = this.head
+    let index = 0
+    if (position === 0) {
+      return current_node.data
+    }else {
+      while (index < position) {
+        current_node = current_node.next
+        index++
+      }
+      return current_node.data
+    }
+  }
 }
 
 var linkedlist = new LinkedList()
@@ -170,8 +200,16 @@ console.log(linkedlist.isEmpty());
 
 console.log('--------size--------');
 console.log(linkedlist.size());
+
 console.log('--------getFirst--------');
 console.log(linkedlist.getFirst());
+
+console.log('--------update--------');
+linkedlist.update(3,22)
+console.log(linkedlist.toString());
+
+console.log('--------get--------');
+console.log(linkedlist.get(3));
 
 
 
