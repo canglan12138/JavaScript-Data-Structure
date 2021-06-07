@@ -94,12 +94,22 @@ function LinkedList() {
   LinkedList.prototype.indexOf = function (data) {
     let current_node = this.head
     let index = 0
+    let flag = false
     if (current_node) {
       while (current_node.data !== data) {
         current_node = current_node.next
-        index++
+        if (current_node === null) {
+          flag = true
+          break
+        }else {
+          index++
+        }
       }
-      return index
+      if (flag) {
+        return false
+      }else {
+        return index
+      }
     }else {
       return false
     }
@@ -188,7 +198,7 @@ console.log(linkedlist.length);
 
 //indexOf
 console.log('--------indexOf--------');
-console.log(linkedlist.indexOf(3));
+console.log(linkedlist.indexOf(5));
 
 //remove
 console.log('--------remove--------');
