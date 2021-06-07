@@ -13,12 +13,12 @@ function LinkedList() {
   //1.追加元素
   LinkedList.prototype.append = function (data) {
     //创建新的节点
-    var new_node = new Node(data)
+    let new_node = new Node(data)
     if (this.length === 0) { //判断链表是否为空，为空直接添加
       this.head = new_node
       this.length +=1
     }else {
-      var current_node = this.head //保存当前头指针指向的节点
+      let current_node = this.head //保存当前头指针指向的节点
       while (current_node.next) {//找到指针为空的节点
         current_node  = current_node.next
       }
@@ -30,7 +30,7 @@ function LinkedList() {
   //2.toString
   LinkedList.prototype.toString = function () {
     let str = ''
-    var current_node = this.head
+    let current_node = this.head
       while (current_node) { //循环遍历节点
         str += current_node.data + ' '
         current_node = current_node.next
@@ -43,9 +43,9 @@ function LinkedList() {
     //对 position 进行越界判断
     if (position < 0 || position > this.length) return false
     //创建节点
-    var new_node = new Node(data)
-    var index = 0
-    var current_node = this.head
+    let new_node = new Node(data)
+    let index = 0
+    let current_node = this.head
     //情况一：position为0
     if (position === 0) {
       new_node.next = this.head
@@ -157,7 +157,7 @@ function LinkedList() {
   }
 }
 
-var linkedlist = new LinkedList()
+const linkedlist = new LinkedList()
 //append
 linkedlist.append(1)
 linkedlist.append(2)
