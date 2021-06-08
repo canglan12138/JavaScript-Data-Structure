@@ -54,6 +54,38 @@ function DoubleLinkedList() {
     }
     return str
   }
+
+  //3.insert
+  DoubleLinkedList.prototype.insert = function (position,data) {
+    //越界判断
+    if (position < 0 || position >this.length) return false
+    let new_node = new Node(data)
+    let current_node = this.head
+    let index = 0
+    //情况一 链表为空，直接添加
+    if (this.length === 0) {
+      this.head = new_node
+      this.tail = new_node
+    }else if (position === 0) { //情况二：在开头添加节点
+      new_node.next = current_node
+      current_node.prev = new_node //注意：之前的第一个节点需要指向现在新设置的第一个节点
+      this.head = new_node
+    }else if (position === this.length) { //情况三：在最后添加节点
+      this.tail.next = new_node
+      new_node.prev = this.tail
+      this.tail = new_node
+    }else { //情况四：在其余位置添加节点
+      while (index < position) {
+        current_node = current_node.next
+        index++
+      }
+      new_node.next = current_node
+      current_node.prev.next = new_node
+      new_node.prev = current_node.prev
+      current_node.prev = new_node
+    }
+    this.length++
+  }
 }
 
 const doublelinkedlist = new DoubleLinkedList()
@@ -71,3 +103,25 @@ console.log(doublelinkedlist.forWardString());
 
 console.log('-----------backWardString-----------');
 console.log(doublelinkedlist.backWardString());
+
+console.log('-----------insert-----------');
+doublelinkedlist.insert(0,'额')
+console.log(doublelinkedlist.toString());
+
+doublelinkedlist.insert(1,'我')
+console.log(doublelinkedlist.toString());
+
+doublelinkedlist.insert(2,'是')
+console.log(doublelinkedlist.toString());
+
+doublelinkedlist.insert(3,'人')
+console.log(doublelinkedlist.toString());
+
+doublelinkedlist.insert(5,'中')
+console.log(doublelinkedlist.toString());
+
+doublelinkedlist.insert(10,'中')
+console.log(doublelinkedlist.toString());
+
+doublelinkedlist.insert(7,'中')
+console.log(doublelinkedlist.toString());
