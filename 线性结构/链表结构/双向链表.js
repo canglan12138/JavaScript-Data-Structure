@@ -46,11 +46,11 @@ function DoubleLinkedList() {
   //2.2 backWardString
   DoubleLinkedList.prototype.backWardString = function () {
     if (this.length === 0) return ''
-    let last_node = this.tail
+    let current_node = this.tail
     let str = ''
-    while (last_node) {
-      str += last_node.data
-      last_node = last_node.prev
+    while (current_node) {
+      str += current_node.data
+      current_node = current_node.prev
     }
     return str
   }
