@@ -69,7 +69,7 @@ function LinkedList() {
     //判断是否有节点
     if (this.length > 0) {
       //position 进行越界判断
-      if (position < 0 || position >= this.length) return false
+      if (position < 0 || position >= this.length) return null
       let current_node = this.head
       let pre = null
       let index = 0
